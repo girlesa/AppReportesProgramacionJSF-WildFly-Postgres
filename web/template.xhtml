@@ -1,0 +1,104 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+
+    <h:head>
+        <title><ui:insert name="title">
+                Reportes Programacion
+            </ui:insert>
+        </title>
+
+        <h:outputStylesheet library="css" name="jsfcrud.css" />
+        <h:outputScript library="js" name="jsfcrud.js"/>
+    </h:head>
+
+
+    <h:body style="background-image: url('../resources/images/Banner7.PNG')">
+
+        <p:layout fullPage="true" >
+
+            <p:growl id="growl" life="3000" />
+
+            <p:layoutUnit position="north" size="180" header="TRANSMILENIO S.A DTB" style="background-image: url('../resources/images/Banner7.PNG')">
+
+                <h:form id="menuForm">
+                    <p:menubar>
+                        <p:menuitem value="#{bundle.Home}" outcome="/template" icon="ui-icon-home"/>
+                        <p:submenu label="REPORTES 30 DIAS">
+                            <p:menuitem value="Flota programada" outcome="/flotaProgramada30dias.xhtml" />
+                             <p:menuitem value="Expediciones programadas" outcome="/expedicionesProgramadas30dias.xhtml" />
+                              <p:menuitem value="Kilometraje programado" outcome="/kmsProgramados30dias.xhtml" />
+
+                        </p:submenu>
+                       
+                        <p:submenu label="BUSQUEDAS">
+                           
+                               
+                       </p:submenu>
+                    </p:menubar>
+
+                </h:form>
+            </p:layoutUnit>
+
+            <p:layoutUnit position="south" size="120" style="background-image: url('../resources/images/Banner6.PNG')">
+                <ui:insert name="footer"/>
+                <br>TRANSMILENIO SA</br> 
+                <br>Dirección Técnica de Buses</br> 
+                <br>Autor: Ing. Girlesa Buitrago </br>  
+                <p>2018 </p>
+                <p>©todos los derechos reservados</p>
+            </p:layoutUnit>
+
+            <p:layoutUnit position="center" style="background-image: url('../resources/images/BannerSITP.PNG')">
+                <ui:insert name="body"/>
+                <p:panelGrid id="display" columns="1" columnClasses="label,value" style="background-image: url('../resources/images/SITP-FONDO1.png')" >
+
+                    <h:form style="">
+                        <p:growl id="growl"  />
+
+
+                        <p:outputLabel>Información de Ayuda</p:outputLabel>
+
+                        <p:accordionPanel id="accordion" multiple="true" style="margin-bottom:20px;">
+                            <p:tab title="INSTRUCCIONES" >
+                                <h:panelGrid columns="2" cellpadding="10"  >
+                                 
+                                    <a href="#{request.contextPath}/faces/listado_buses.xhtml">
+                                        <img src="#{request.contextPath}/resources/images/tablas.jpg" width="70" alt="CONTEO BUSES ÚLTIMOS 30 DÍAS CARGADOS" onmouseover="CONTEO BUSES ÚLTIMOS 30 DÍAS CARGADOS"/>
+                                    </a>                                
+                                    <h:outputText
+                                        value="En la barra de menú, hay tres Opciones de reportes:  1.  'REPORTES 30 DIAS':   corresponde a la información de los últimos 30 días  cargados en la base de datos correspondientes bien sea a Contero de  Flota programada, Expediciones y Kilometraje diario. 2.Opción 'BÚSQUEDAS', realizar filtros de búsqueda por Operador, fechas, ruta comercial , Linea y tipo de evento.             
+                                       Los campos OBLIGATORIOS SON LAS FECHAS, si no se llenan, no podrá visualizarse la consulta.  Tenga en cuenta que si no aparece información, debe haber error en la fecha, o la información no ha sido cargada.  Una vez obtenida la consulta en pantalla, se podrá descargar en formato .csv, el cual podrá abrir en excel y visualizar los datos en columnas si desea.                                        
+                                       Con esta opción, usted podrá visualizar información solicitada en el rango de fechas o filtros elegido,tenga en cuenta que solo se descargará la información resultante de la consulta.
+                                        en el caso de Kilometraje, solo podrá visualizar máximo una semana de histórico por limitación de memoria y gran cantidad de datos. " />
+                                </h:panelGrid>
+                            </p:tab>                           
+                            <p:tab title="Búsquedas y filtros">
+                                <h:panelGrid columns="2" cellpadding="10">
+                                    <a href="#{request.contextPath}/faces/Filter_Buses_All.xhtml">
+                                        <img src="#{request.contextPath}/resources/images/busqueda3.PNG" width="70" />
+                                    </a>
+                                    <h:outputText value="En el menú BÚSQUEDAS, podrá buscar FLOTA, EXPEDICIONES Y KILOMETRAJE PROGRAMADO por rango de fechas , o por linea, ruta u operador.  Tenga en cuenta que la carga de un histórico, podrá no tener respuesta
+                                                  si no hay suficiente memoria en su equipo." />
+                                </h:panelGrid>
+                            </p:tab>
+                        </p:accordionPanel>
+
+
+
+                        <p:blockUI block="accordion" widgetVar="bui" />
+                    </h:form>
+
+                </p:panelGrid>
+
+            </p:layoutUnit>
+
+        </p:layout>
+
+    </h:body>
+
+</html>
+

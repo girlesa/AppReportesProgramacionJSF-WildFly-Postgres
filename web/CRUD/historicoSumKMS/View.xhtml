@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="HistoricoSumKMSViewDlg" widgetVar="HistoricoSumKMSViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundleExp.ViewHistoricoSumKMSTitle}">
+            <h:form id="HistoricoSumKMSViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{historicoSumKMSController.selected != null}">
+                        <h:outputText value="#{bundleExp.ViewHistoricoSumKMSLabel_id}"/>
+                        <h:outputText value="#{historicoSumKMSController.selected.id}" title="#{bundleExp.ViewHistoricoSumKMSTitle_id}"/>
+                        <h:outputText value="#{bundleExp.ViewHistoricoSumKMSLabel_cuadro}"/>
+                        <h:outputText value="#{historicoSumKMSController.selected.cuadro}" title="#{bundleExp.ViewHistoricoSumKMSTitle_cuadro}"/>
+                        <h:outputText value="#{bundleExp.ViewHistoricoSumKMSLabel_linea}"/>
+                        <h:outputText value="#{historicoSumKMSController.selected.linea}" title="#{bundleExp.ViewHistoricoSumKMSTitle_linea}"/>
+                        <h:outputText value="#{bundleExp.ViewHistoricoSumKMSLabel_tipoEvento}"/>
+                        <h:outputText value="#{historicoSumKMSController.selected.tipoEvento}" title="#{bundleExp.ViewHistoricoSumKMSTitle_tipoEvento}"/>
+                        <h:outputText value="#{bundleExp.ViewHistoricoSumKMSLabel_kms}"/>
+                        <h:outputText value="#{historicoSumKMSController.selected.kms}" title="#{bundleExp.ViewHistoricoSumKMSTitle_kms}"/>
+                        <h:outputText value="#{bundleExp.ViewHistoricoSumKMSLabel_tipologia}"/>
+                        <h:outputText value="#{historicoSumKMSController.selected.tipologia}" title="#{bundleExp.ViewHistoricoSumKMSTitle_tipologia}"/>
+                        <h:outputText value="#{bundleExp.ViewHistoricoSumKMSLabel_operador}"/>
+                        <h:outputText value="#{historicoSumKMSController.selected.operador}" title="#{bundleExp.ViewHistoricoSumKMSTitle_operador}"/>
+                        <h:outputText value="#{bundleExp.ViewHistoricoSumKMSLabel_rc}"/>
+                        <h:outputText value="#{historicoSumKMSController.selected.rc}" title="#{bundleExp.ViewHistoricoSumKMSTitle_rc}"/>
+                        <h:outputText value="#{bundleExp.ViewHistoricoSumKMSLabel_fecha}"/>
+                        <h:outputText value="#{historicoSumKMSController.selected.fecha}" title="#{bundleExp.ViewHistoricoSumKMSTitle_fecha}">
+                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                        </h:outputText>
+                        <h:outputText value="#{bundleExp.ViewHistoricoSumKMSLabel_tipodia}"/>
+                        <h:outputText value="#{historicoSumKMSController.selected.tipodia}" title="#{bundleExp.ViewHistoricoSumKMSTitle_tipodia}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundleExp.Close}" onclick="HistoricoSumKMSViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="HistoricoCuentaExpedicionesViewDlg" widgetVar="HistoricoCuentaExpedicionesViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundleExp.ViewHistoricoCuentaExpedicionesTitle}">
+            <h:form id="HistoricoCuentaExpedicionesViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{historicoCuentaExpedicionesController.selected != null}">
+                        <h:outputText value="#{bundleExp.ViewHistoricoCuentaExpedicionesLabel_id}"/>
+                        <h:outputText value="#{historicoCuentaExpedicionesController.selected.id}" title="#{bundleExp.ViewHistoricoCuentaExpedicionesTitle_id}"/>
+                        <h:outputText value="#{bundleExp.ViewHistoricoCuentaExpedicionesLabel_cuadro}"/>
+                        <h:outputText value="#{historicoCuentaExpedicionesController.selected.cuadro}" title="#{bundleExp.ViewHistoricoCuentaExpedicionesTitle_cuadro}"/>
+                        <h:outputText value="#{bundleExp.ViewHistoricoCuentaExpedicionesLabel_linea}"/>
+                        <h:outputText value="#{historicoCuentaExpedicionesController.selected.linea}" title="#{bundleExp.ViewHistoricoCuentaExpedicionesTitle_linea}"/>
+                        <h:outputText value="#{bundleExp.ViewHistoricoCuentaExpedicionesLabel_tipoEvento}"/>
+                        <h:outputText value="#{historicoCuentaExpedicionesController.selected.tipoEvento}" title="#{bundleExp.ViewHistoricoCuentaExpedicionesTitle_tipoEvento}"/>
+                        <h:outputText value="#{bundleExp.ViewHistoricoCuentaExpedicionesLabel_cuentaexpediciones}"/>
+                        <h:outputText value="#{historicoCuentaExpedicionesController.selected.cuentaexpediciones}" title="#{bundleExp.ViewHistoricoCuentaExpedicionesTitle_cuentaexpediciones}"/>
+                        <h:outputText value="#{bundleExp.ViewHistoricoCuentaExpedicionesLabel_tipologia}"/>
+                        <h:outputText value="#{historicoCuentaExpedicionesController.selected.tipologia}" title="#{bundleExp.ViewHistoricoCuentaExpedicionesTitle_tipologia}"/>
+                        <h:outputText value="#{bundleExp.ViewHistoricoCuentaExpedicionesLabel_operador}"/>
+                        <h:outputText value="#{historicoCuentaExpedicionesController.selected.operador}" title="#{bundleExp.ViewHistoricoCuentaExpedicionesTitle_operador}"/>
+                        <h:outputText value="#{bundleExp.ViewHistoricoCuentaExpedicionesLabel_rc}"/>
+                        <h:outputText value="#{historicoCuentaExpedicionesController.selected.rc}" title="#{bundleExp.ViewHistoricoCuentaExpedicionesTitle_rc}"/>
+                        <h:outputText value="#{bundleExp.ViewHistoricoCuentaExpedicionesLabel_fecha}"/>
+                        <h:outputText value="#{historicoCuentaExpedicionesController.selected.fecha}" title="#{bundleExp.ViewHistoricoCuentaExpedicionesTitle_fecha}">
+                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                        </h:outputText>
+                        <h:outputText value="#{bundleExp.ViewHistoricoCuentaExpedicionesLabel_mes}"/>
+                        <h:outputText value="#{historicoCuentaExpedicionesController.selected.mes}" title="#{bundleExp.ViewHistoricoCuentaExpedicionesTitle_mes}"/>
+                        <h:outputText value="#{bundleExp.ViewHistoricoCuentaExpedicionesLabel_tipodia}"/>
+                        <h:outputText value="#{historicoCuentaExpedicionesController.selected.tipodia}" title="#{bundleExp.ViewHistoricoCuentaExpedicionesTitle_tipodia}"/>
+                        <h:outputText value="#{bundleExp.ViewHistoricoCuentaExpedicionesLabel_diaCal}"/>
+                        <h:outputText value="#{historicoCuentaExpedicionesController.selected.diaCal}" title="#{bundleExp.ViewHistoricoCuentaExpedicionesTitle_diaCal}"/>
+                        <h:outputText value="#{bundleExp.ViewHistoricoCuentaExpedicionesLabel_sumar}"/>
+                        <h:outputText value="#{historicoCuentaExpedicionesController.selected.sumar}" title="#{bundleExp.ViewHistoricoCuentaExpedicionesTitle_sumar}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundleExp.Close}" onclick="HistoricoCuentaExpedicionesViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

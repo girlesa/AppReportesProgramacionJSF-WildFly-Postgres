@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="HistoricoSumKMSEditDlg" widgetVar="HistoricoSumKMSEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundleExp.EditHistoricoSumKMSTitle}">
+            <h:form id="HistoricoSumKMSEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{historicoSumKMSController.selected != null}">
+                        <p:outputLabel value="#{bundleExp.EditHistoricoSumKMSLabel_id}" for="id" />
+                        <p:inputText id="id" value="#{historicoSumKMSController.selected.id}" title="#{bundleExp.EditHistoricoSumKMSTitle_id}" required="true" requiredMessage="#{bundleExp.EditHistoricoSumKMSRequiredMessage_id}"/>
+                        <p:outputLabel value="#{bundleExp.EditHistoricoSumKMSLabel_cuadro}" for="cuadro" />
+                        <p:inputText id="cuadro" value="#{historicoSumKMSController.selected.cuadro}" title="#{bundleExp.EditHistoricoSumKMSTitle_cuadro}" />
+                        <p:outputLabel value="#{bundleExp.EditHistoricoSumKMSLabel_linea}" for="linea" />
+                        <p:inputText id="linea" value="#{historicoSumKMSController.selected.linea}" title="#{bundleExp.EditHistoricoSumKMSTitle_linea}" />
+                        <p:outputLabel value="#{bundleExp.EditHistoricoSumKMSLabel_tipoEvento}" for="tipoEvento" />
+                        <p:inputText id="tipoEvento" value="#{historicoSumKMSController.selected.tipoEvento}" title="#{bundleExp.EditHistoricoSumKMSTitle_tipoEvento}" />
+                        <p:outputLabel value="#{bundleExp.EditHistoricoSumKMSLabel_kms}" for="kms" />
+                        <p:inputText id="kms" value="#{historicoSumKMSController.selected.kms}" title="#{bundleExp.EditHistoricoSumKMSTitle_kms}" />
+                        <p:outputLabel value="#{bundleExp.EditHistoricoSumKMSLabel_tipologia}" for="tipologia" />
+                        <p:inputText id="tipologia" value="#{historicoSumKMSController.selected.tipologia}" title="#{bundleExp.EditHistoricoSumKMSTitle_tipologia}" />
+                        <p:outputLabel value="#{bundleExp.EditHistoricoSumKMSLabel_operador}" for="operador" />
+                        <p:inputText id="operador" value="#{historicoSumKMSController.selected.operador}" title="#{bundleExp.EditHistoricoSumKMSTitle_operador}" />
+                        <p:outputLabel value="#{bundleExp.EditHistoricoSumKMSLabel_rc}" for="rc" />
+                        <p:inputText id="rc" value="#{historicoSumKMSController.selected.rc}" title="#{bundleExp.EditHistoricoSumKMSTitle_rc}" />
+                        <p:outputLabel value="#{bundleExp.EditHistoricoSumKMSLabel_fecha}" for="fecha" />
+                        <p:calendar id="fecha" pattern="MM/dd/yyyy" value="#{historicoSumKMSController.selected.fecha}" title="#{bundleExp.EditHistoricoSumKMSTitle_fecha}"  showOn="button"/>
+                        <p:outputLabel value="#{bundleExp.EditHistoricoSumKMSLabel_tipodia}" for="tipodia" />
+                        <p:inputText id="tipodia" value="#{historicoSumKMSController.selected.tipodia}" title="#{bundleExp.EditHistoricoSumKMSTitle_tipodia}" />
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{historicoSumKMSController.update}" value="#{bundleExp.Save}" update="display,:HistoricoSumKMSListForm:datalist,:growl" oncomplete="handleSubmit(args, 'HistoricoSumKMSEditDialog');"/>
+                    <p:commandButton value="#{bundleExp.Cancel}" onclick="HistoricoSumKMSEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

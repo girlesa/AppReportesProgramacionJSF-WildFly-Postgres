@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="HistoricoCuentaExpedicionesCreateDlg" widgetVar="HistoricoCuentaExpedicionesCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundleExp.CreateHistoricoCuentaExpedicionesTitle}">
+            <h:form id="HistoricoCuentaExpedicionesCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{historicoCuentaExpedicionesController.selected != null}">
+                        <p:outputLabel value="#{bundleExp.CreateHistoricoCuentaExpedicionesLabel_id}" for="id" />
+                        <p:inputText id="id" value="#{historicoCuentaExpedicionesController.selected.id}" title="#{bundleExp.CreateHistoricoCuentaExpedicionesTitle_id}" required="true" requiredMessage="#{bundleExp.CreateHistoricoCuentaExpedicionesRequiredMessage_id}"/>
+                        <p:outputLabel value="#{bundleExp.CreateHistoricoCuentaExpedicionesLabel_cuadro}" for="cuadro" />
+                        <p:inputText id="cuadro" value="#{historicoCuentaExpedicionesController.selected.cuadro}" title="#{bundleExp.CreateHistoricoCuentaExpedicionesTitle_cuadro}" required="true" requiredMessage="#{bundleExp.CreateHistoricoCuentaExpedicionesRequiredMessage_cuadro}"/>
+                        <p:outputLabel value="#{bundleExp.CreateHistoricoCuentaExpedicionesLabel_linea}" for="linea" />
+                        <p:inputText id="linea" value="#{historicoCuentaExpedicionesController.selected.linea}" title="#{bundleExp.CreateHistoricoCuentaExpedicionesTitle_linea}" required="true" requiredMessage="#{bundleExp.CreateHistoricoCuentaExpedicionesRequiredMessage_linea}"/>
+                        <p:outputLabel value="#{bundleExp.CreateHistoricoCuentaExpedicionesLabel_tipoEvento}" for="tipoEvento" />
+                        <p:inputText id="tipoEvento" value="#{historicoCuentaExpedicionesController.selected.tipoEvento}" title="#{bundleExp.CreateHistoricoCuentaExpedicionesTitle_tipoEvento}" required="true" requiredMessage="#{bundleExp.CreateHistoricoCuentaExpedicionesRequiredMessage_tipoEvento}"/>
+                        <p:outputLabel value="#{bundleExp.CreateHistoricoCuentaExpedicionesLabel_cuentaexpediciones}" for="cuentaexpediciones" />
+                        <p:inputText id="cuentaexpediciones" value="#{historicoCuentaExpedicionesController.selected.cuentaexpediciones}" title="#{bundleExp.CreateHistoricoCuentaExpedicionesTitle_cuentaexpediciones}" />
+                        <p:outputLabel value="#{bundleExp.CreateHistoricoCuentaExpedicionesLabel_tipologia}" for="tipologia" />
+                        <p:inputText id="tipologia" value="#{historicoCuentaExpedicionesController.selected.tipologia}" title="#{bundleExp.CreateHistoricoCuentaExpedicionesTitle_tipologia}" required="true" requiredMessage="#{bundleExp.CreateHistoricoCuentaExpedicionesRequiredMessage_tipologia}"/>
+                        <p:outputLabel value="#{bundleExp.CreateHistoricoCuentaExpedicionesLabel_operador}" for="operador" />
+                        <p:inputText id="operador" value="#{historicoCuentaExpedicionesController.selected.operador}" title="#{bundleExp.CreateHistoricoCuentaExpedicionesTitle_operador}" required="true" requiredMessage="#{bundleExp.CreateHistoricoCuentaExpedicionesRequiredMessage_operador}"/>
+                        <p:outputLabel value="#{bundleExp.CreateHistoricoCuentaExpedicionesLabel_rc}" for="rc" />
+                        <p:inputText id="rc" value="#{historicoCuentaExpedicionesController.selected.rc}" title="#{bundleExp.CreateHistoricoCuentaExpedicionesTitle_rc}" required="true" requiredMessage="#{bundleExp.CreateHistoricoCuentaExpedicionesRequiredMessage_rc}"/>
+                        <p:outputLabel value="#{bundleExp.CreateHistoricoCuentaExpedicionesLabel_fecha}" for="fecha" />
+                        <p:calendar id="fecha" pattern="MM/dd/yyyy" value="#{historicoCuentaExpedicionesController.selected.fecha}" title="#{bundleExp.EditHistoricoCuentaExpedicionesTitle_fecha}"  showOn="button"/>
+                        <p:outputLabel value="#{bundleExp.CreateHistoricoCuentaExpedicionesLabel_mes}" for="mes" />
+                        <p:inputText id="mes" value="#{historicoCuentaExpedicionesController.selected.mes}" title="#{bundleExp.CreateHistoricoCuentaExpedicionesTitle_mes}" required="true" requiredMessage="#{bundleExp.CreateHistoricoCuentaExpedicionesRequiredMessage_mes}"/>
+                        <p:outputLabel value="#{bundleExp.CreateHistoricoCuentaExpedicionesLabel_tipodia}" for="tipodia" />
+                        <p:inputText id="tipodia" value="#{historicoCuentaExpedicionesController.selected.tipodia}" title="#{bundleExp.CreateHistoricoCuentaExpedicionesTitle_tipodia}" required="true" requiredMessage="#{bundleExp.CreateHistoricoCuentaExpedicionesRequiredMessage_tipodia}"/>
+                        <p:outputLabel value="#{bundleExp.CreateHistoricoCuentaExpedicionesLabel_diaCal}" for="diaCal" />
+                        <p:inputText id="diaCal" value="#{historicoCuentaExpedicionesController.selected.diaCal}" title="#{bundleExp.CreateHistoricoCuentaExpedicionesTitle_diaCal}" required="true" requiredMessage="#{bundleExp.CreateHistoricoCuentaExpedicionesRequiredMessage_diaCal}"/>
+                        <p:outputLabel value="#{bundleExp.CreateHistoricoCuentaExpedicionesLabel_sumar}" for="sumar" />
+                        <p:inputText id="sumar" value="#{historicoCuentaExpedicionesController.selected.sumar}" title="#{bundleExp.CreateHistoricoCuentaExpedicionesTitle_sumar}" />
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{historicoCuentaExpedicionesController.create}" value="#{bundleExp.Save}" update="display,:HistoricoCuentaExpedicionesListForm:datalist,:growl" oncomplete="handleSubmit(args,'HistoricoCuentaExpedicionesCreateDialog');"/>
+                    <p:commandButton value="#{bundleExp.Cancel}" onclick="HistoricoCuentaExpedicionesCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

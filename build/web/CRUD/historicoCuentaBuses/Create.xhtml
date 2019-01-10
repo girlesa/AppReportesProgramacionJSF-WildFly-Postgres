@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="HistoricoCuentaBusesCreateDlg" widgetVar="HistoricoCuentaBusesCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateHistoricoCuentaBusesTitle}">
+            <h:form id="HistoricoCuentaBusesCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{historicoCuentaBusesController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateHistoricoCuentaBusesLabel_id}" for="id" />
+                        <p:inputText id="id" value="#{historicoCuentaBusesController.selected.id}" title="#{bundle.CreateHistoricoCuentaBusesTitle_id}" required="true" requiredMessage="#{bundle.CreateHistoricoCuentaBusesRequiredMessage_id}"/>
+                        <p:outputLabel value="#{bundle.CreateHistoricoCuentaBusesLabel_rc}" for="rc" />
+                        <p:inputText id="rc" value="#{historicoCuentaBusesController.selected.rc}" title="#{bundle.CreateHistoricoCuentaBusesTitle_rc}" required="true" requiredMessage="#{bundle.CreateHistoricoCuentaBusesRequiredMessage_rc}"/>
+                        <p:outputLabel value="#{bundle.CreateHistoricoCuentaBusesLabel_tipologia}" for="tipologia" />
+                        <p:inputText id="tipologia" value="#{historicoCuentaBusesController.selected.tipologia}" title="#{bundle.CreateHistoricoCuentaBusesTitle_tipologia}" required="true" requiredMessage="#{bundle.CreateHistoricoCuentaBusesRequiredMessage_tipologia}"/>
+                        <p:outputLabel value="#{bundle.CreateHistoricoCuentaBusesLabel_operador}" for="operador" />
+                        <p:inputText id="operador" value="#{historicoCuentaBusesController.selected.operador}" title="#{bundle.CreateHistoricoCuentaBusesTitle_operador}" required="true" requiredMessage="#{bundle.CreateHistoricoCuentaBusesRequiredMessage_operador}"/>
+                        <p:outputLabel value="#{bundle.CreateHistoricoCuentaBusesLabel_zona}" for="zona" />
+                        <p:inputText id="zona" value="#{historicoCuentaBusesController.selected.zona}" title="#{bundle.CreateHistoricoCuentaBusesTitle_zona}" required="true" requiredMessage="#{bundle.CreateHistoricoCuentaBusesRequiredMessage_zona}"/>
+                        <p:outputLabel value="#{bundle.CreateHistoricoCuentaBusesLabel_conteoBusesTipologia}" for="conteoBusesTipologia" />
+                        <p:inputText id="conteoBusesTipologia" value="#{historicoCuentaBusesController.selected.conteoBusesTipologia}" title="#{bundle.CreateHistoricoCuentaBusesTitle_conteoBusesTipologia}" />
+                        <p:outputLabel value="#{bundle.CreateHistoricoCuentaBusesLabel_linea}" for="linea" />
+                        <p:inputText id="linea" value="#{historicoCuentaBusesController.selected.linea}" title="#{bundle.CreateHistoricoCuentaBusesTitle_linea}" required="true" requiredMessage="#{bundle.CreateHistoricoCuentaBusesRequiredMessage_linea}"/>
+                        <p:outputLabel value="#{bundle.CreateHistoricoCuentaBusesLabel_rutaCom}" for="rutaCom" />
+                        <p:inputText id="rutaCom" value="#{historicoCuentaBusesController.selected.rutaCom}" title="#{bundle.CreateHistoricoCuentaBusesTitle_rutaCom}" required="true" requiredMessage="#{bundle.CreateHistoricoCuentaBusesRequiredMessage_rutaCom}"/>
+                        <p:outputLabel value="#{bundle.CreateHistoricoCuentaBusesLabel_fecha}" for="fecha" />
+                        <p:calendar id="fecha" pattern="MM/dd/yyyy" value="#{historicoCuentaBusesController.selected.fecha}" title="#{bundle.EditHistoricoCuentaBusesTitle_fecha}" required="true" requiredMessage="#{bundle.EditHistoricoCuentaBusesRequiredMessage_fecha}" showOn="button"/>
+                        <p:outputLabel value="#{bundle.CreateHistoricoCuentaBusesLabel_tipodia}" for="tipodia" />
+                        <p:inputText id="tipodia" value="#{historicoCuentaBusesController.selected.tipodia}" title="#{bundle.CreateHistoricoCuentaBusesTitle_tipodia}" required="true" requiredMessage="#{bundle.CreateHistoricoCuentaBusesRequiredMessage_tipodia}"/>
+                        <p:outputLabel value="#{bundle.CreateHistoricoCuentaBusesLabel_mes}" for="mes" />
+                        <p:inputText id="mes" value="#{historicoCuentaBusesController.selected.mes}" title="#{bundle.CreateHistoricoCuentaBusesTitle_mes}" required="true" requiredMessage="#{bundle.CreateHistoricoCuentaBusesRequiredMessage_mes}"/>
+                        <p:outputLabel value="#{bundle.CreateHistoricoCuentaBusesLabel_anio}" for="anio" />
+                        <p:inputText id="anio" value="#{historicoCuentaBusesController.selected.anio}" title="#{bundle.CreateHistoricoCuentaBusesTitle_anio}" required="true" requiredMessage="#{bundle.CreateHistoricoCuentaBusesRequiredMessage_anio}"/>
+                        <p:outputLabel value="#{bundle.CreateHistoricoCuentaBusesLabel_cuenta}" for="cuenta" />
+                        <p:inputText id="cuenta" value="#{historicoCuentaBusesController.selected.cuenta}" title="#{bundle.CreateHistoricoCuentaBusesTitle_cuenta}" />
+                        <p:outputLabel value="#{bundle.CreateHistoricoCuentaBusesLabel_suma}" for="suma" />
+                        <p:inputText id="suma" value="#{historicoCuentaBusesController.selected.suma}" title="#{bundle.CreateHistoricoCuentaBusesTitle_suma}" />
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{historicoCuentaBusesController.create}" value="#{bundle.Save}" update="display,:HistoricoCuentaBusesListForm:datalist,:growl" oncomplete="handleSubmit(args,'HistoricoCuentaBusesCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="HistoricoCuentaBusesCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>
