@@ -62,12 +62,7 @@
                         </h:commandLink>
 
                          <p:dataTable id="tblKms" value="#{busquedaHistoricoSumKmsBean.listKmsIntervalo}" var="kms" paginator="true" rowKey="#{item.id}" rows="100"  rowsPerPageTemplate="50,200,500,1000,10000" >
-                            <p:column>
-                                <f:facet name="header">
-                                    <h:outputText value="ID"/>
-                                </f:facet>
-                                <h:outputText value="#{kms.id}"/>
-                            </p:column> 
+                           
                             <p:column>
                                 <f:facet name="header">
                                     <h:outputText value="CUADRO"/>
