@@ -53,9 +53,9 @@
                 <p>©todos los derechos reservados</p>
             </p:layoutUnit>
 
-            <p:layoutUnit position="center" style="background-image: url('../resources/images/BannerSITP.PNG')">
+            <p:layoutUnit position="center" style="background-image: url('../resources/images/Banner6.PNG')">
                 <ui:insert name="body"/>
-                <p:panelGrid id="display" columns="1" columnClasses="label,value" style="background-image: url('../resources/images/SITP-FONDO1.png')" >
+                <p:panelGrid id="display" columns="1" columnClasses="label,value" style="background-image: url('../resources/images/Banner6.PNG')" >
 
                     <h:form style="">
                         <p:growl id="growl"  />
@@ -71,7 +71,7 @@
                                         <img src="#{request.contextPath}/resources/images/tablas.jpg" width="70" alt="CONTEO BUSES ÚLTIMOS 30 DÍAS CARGADOS" onmouseover="CONTEO BUSES ÚLTIMOS 30 DÍAS CARGADOS"/>
                                     </a>                                
                                     <h:outputText
-                                        value="En la barra de menú, hay dos Opciones de reportes:  1.  'REPORTES 30 DIAS':   corresponde a la información de los últimos 30 días  cargados en la base de datos correspondientes bien sea a Contero de  Flota programada, Expediciones y Kilometraje diario. 2.Opción 'BÚSQUEDAS', realizar filtros de búsqueda por Operador, fechas, ruta comercial , Linea y tipo de evento.             
+                                        value="En la barra de menú, hay dos Opciones de reportes:  1.  'REPORTES 30 DIAS':   corresponde a la información de los últimos 30 días  cargados en la base de datos correspondientes bien sea la cuenta de buses programados por tipología, Expediciones y Kilometraje diario. 2.Opción 'BÚSQUEDAS', realizar filtros de búsqueda por Operador, fechas, ruta comercial , Linea y tipo de evento.             
                                        Los campos OBLIGATORIOS SON LAS FECHAS, si no se llenan, no podrá visualizarse la consulta.  Tenga en cuenta que si no aparece información, debe haber error en la fecha, o la información no ha sido cargada.  Una vez obtenida la consulta en pantalla, se podrá descargar en formato .csv, el cual podrá abrir en excel y visualizar los datos en columnas si desea.                                        
                                        Con esta opción, usted podrá visualizar información solicitada en el rango de fechas o filtros elegido,tenga en cuenta que solo se descargará la información resultante de la consulta.
                                         en el caso de Kilometraje, solo podrá visualizar máximo una semana de histórico por limitación de memoria y gran cantidad de datos. " />
@@ -83,7 +83,15 @@
                                         <img src="#{request.contextPath}/resources/images/busqueda3.PNG" width="70" />
                                     </a>
                                     <h:outputText value="En el menú BÚSQUEDAS, podrá buscar FLOTA, EXPEDICIONES Y KILOMETRAJE PROGRAMADO por rango de fechas , o por linea, ruta u operador.  Tenga en cuenta que la carga de un histórico, podrá no tener respuesta
-                                                  si no hay suficiente memoria en su equipo." />
+                                                  si no hay suficiente memoria en su equipo.  También tenga en cuenta que la fecha inicial debe ser anterior a la fecha final, de lo contrario no arrojará nada." />
+                                </h:panelGrid>
+                            </p:tab>
+                             <p:tab title="Descargas">
+                                <h:panelGrid columns="2" cellpadding="10">
+                                    <a href="#{request.contextPath}/faces/index.xhtml">
+                                        <img src="#{request.contextPath}/resources/images/descarga6.PNG" width="80" />
+                                    </a>
+                                    <h:outputText value="Al hacer click en la imágen de descarga, se descargará la información resultante de la consulta en formato .csv.  Si desea verlo, lo puede abrir en excel o cualquier programa que permita visualizar este formato " />
                                 </h:panelGrid>
                             </p:tab>
                         </p:accordionPanel>

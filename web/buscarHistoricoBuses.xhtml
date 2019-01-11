@@ -66,14 +66,15 @@
 
                         <h:commandLink>
 
-                            <p:graphicImage url="./../resources/images/csv.png" width="24"/>
+                            <p:graphicImage url="./../resources/images/descarga6.PNG" width="50"/>
+                            
                             <p:dataExporter type="csv" target="tblBuses" fileName="FlotaProgramadaFecha" />
-                            <p:outputLabel value="descargar"  />
+                            
                         </h:commandLink>
                         
                             <p:panel>
 
-                                <p:dataTable id="tblBuses" value="#{busquedaHistoricoBusesBean.listFilterBuses}" var="bus" paginator="true" rowKey="#{item.id}" rows="100"  rowsPerPageTemplate="50,200,500,1000,100000" >
+                                <p:dataTable id="tblBuses" value="#{busquedaHistoricoBusesBean.listFilterBuses}" var="bus" paginator="true" rowKey="#{item.id}" rows="100"  rowsPerPageTemplate="50,200,500,1000,100000" >  
                                 <p:column>
                                     <f:facet name="header">
                                         <h:outputText value="ID"/>
