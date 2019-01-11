@@ -1,0 +1,136 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <ui:composition template="/template.xhtml">
+
+        <ui:define name="body" >
+            <h:body>
+                <p:panel header="#{bundleExped.PageKmsName}">
+                    <h:form>
+                        <p:growl id="msgs" showDetail="true" />
+                        <h:panelGrid columns="1" >
+                            <p:commandButton value="!!!!INGRESE MÁXIMO UNA SEMANA !!!" type="button" onclick="PF('dlg3').show();" /> 
+                        </h:panelGrid>
+                        <p:dialog header="INFORMACIÓN CONSULTAS VS MEMORIA" widgetVar="dlg3" showEffect="explode" hideEffect="bounce" height="100">
+                            <h:outputText value="Si tiene poca memoria, elija rango de fechas cortas, si elije más, puede que la memoria no le alcance para mostrar muchos datos. 
+                                          La  información mostrada depende de  la última actualización en la  base de datos de programación" />
+                        </p:dialog>
+
+                        <p:outputLabel for="button3" value="Fecha inicial:*" />
+                        <p:calendar id="button3" value="#{busquedaHistoricoSumKmsBean.date1}" showOn="button" locale= "co" navigator="True" pattern="yyyy-MM-dd" placeholder="yyyy-MM-dd(obligatorio)"/>
+                        <p:outputLabel for="button4" value="Fecha Final:*" />
+                        <p:calendar id="button4" value="#{busquedaHistoricoSumKmsBean.date2}" showOn="button" locale="co" navigator="True" pattern="yyyy-MM-dd" placeholder="yyyy-MM-dd(obligatorio)"/>
+
+                        <p:dialog modal="true" resizable="false" header="Values" widgetVar="dlg" showEffect="fold">
+                            <h:outputText value="Button:" />
+
+                            <h:outputText value="#{busquedaHistoricoSumKmsBean.date1}">
+                                <f:convertDateTime pattern="dd/MM/yyyy" />
+                            </h:outputText>
+
+                            <h:outputText value="Button:" />
+
+                            <h:outputText value="#{busquedaHistoricoSumKmsBean.date2}">
+                                <f:convertDateTime pattern="dd/MM/yyyy" />
+                            </h:outputText>
+                        </p:dialog>
+                        <p:outputLabel value="ingrese Operador"/>
+                        <p:inputText value="#{busquedaHistoricoSumKmsBean.txt_operador_a_buscar}" placeholder="nombre o iniciales(Opcional)"/>
+                        <p:outputLabel value="Ingrese Ruta comercial"/>
+                        <p:inputText value="#{busquedaHistoricoSumKmsBean.txt_ruta_a_buscar}" placeholder="nombre o iniciales(Opcional)"/>
+                         <p:outputLabel value="Ingrese Tipo Evento"/>
+                         <p:inputText value="#{busquedaHistoricoSumKmsBean.txt_tipologia_a_buscar}" placeholder="Exp, Vpa,Vex(Opcional)"/>
+                        
+                         <p:outputLabel value="Ingrese Tipologia"/>
+                         <p:inputText value="#{busquedaHistoricoSumKmsBean.txt_tipo_evento_a_buscar}" placeholder="Buseton, padron,..(Opcional)"/>
+
+
+
+                         <p:commandButton value="Buscar" action="#{busquedaHistoricoSumKmsBean.llenarTablaKms()}" update="tblKms" title="DEBE ESCRIBIR FECHA INICIAL Y FINAL dd/MM/yyyy"/>
+
+                        <h:commandLink>
+                            <p:graphicImage url="./../resources/images/csv.png" width="24"/>
+                            <p:dataExporter type="csv" target="tblKms" fileName="Kms ProgramadosIntervalo" />
+                            <p:outputLabel value="descargar"  />
+                        </h:commandLink>
+
+                         <p:dataTable id="tblKms" value="#{busquedaHistoricoSumKmsBean.listKmsIntervalo}" var="kms" paginator="true" rowKey="#{item.id}" rows="100"  rowsPerPageTemplate="50,200,500,1000,10000" >
+                            <p:column>
+                                <f:facet name="header">
+                                    <h:outputText value="ID"/>
+                                </f:facet>
+                                <h:outputText value="#{kms.id}"/>
+                            </p:column> 
+                            <p:column>
+                                <f:facet name="header">
+                                    <h:outputText value="CUADRO"/>
+                                </f:facet>
+                                <h:outputText value="#{kms.cuadro}"/>
+                            </p:column> 
+                            <p:column>
+                                <f:facet name="header">
+                                    <h:outputText value="Linea"/>
+                                </f:facet>
+                                <h:outputText value="#{kms.linea}"/>
+                            </p:column>
+                            <p:column>
+                                <f:facet name="header">
+                                    <h:outputText value="Tipo Evento"/>
+                                </f:facet>
+                                <h:outputText value="#{kms.tipoEvento}"/>
+                            </p:column>
+                            <p:column>
+                                <f:facet name="header">
+                                    <h:outputText value="Kms Programados"/>
+                                </f:facet>
+                                <h:outputText value="#{kms.kms}"/>
+                            </p:column>
+                            <p:column>
+                                <f:facet name="header">
+                                    <h:outputText value="Tipologia"/>
+                                </f:facet>
+                                <h:outputText value="#{kms.tipologia}"/>
+                            </p:column>
+
+                            <p:column>
+                                <f:facet name="header">
+                                    <h:outputText value="Operador"/>
+                                </f:facet>
+                                <h:outputText value="#{kms.operador}"/>
+                            </p:column>
+                            <p:column>
+                                <f:facet name="header">
+                                    <h:outputText value="RC"/>
+                                </f:facet>
+                                <h:outputText value="#{kms.rc}"/>
+                            </p:column>
+                            <p:column>
+                                <f:facet name="header">
+                                    <h:outputText value="Fecha"/>
+                                </f:facet>
+                                <h:outputText value="#{kms.fecha}"/>
+                            </p:column>
+
+                            <p:column>
+                                <f:facet name="header">
+                                    <h:outputText value="Tipo Dia"/>
+                                </f:facet>
+                                <h:outputText value="#{kms.tipodia}"/>
+                            </p:column>
+
+                        </p:dataTable>
+                    </h:form> 
+
+                </p:panel>
+            </h:body>
+        </ui:define> 
+    </ui:composition>
+</html>
+

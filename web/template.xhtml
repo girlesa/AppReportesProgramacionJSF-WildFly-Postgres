@@ -37,13 +37,14 @@
                         <p:submenu label="BUSQUEDAS">
                             <p:menuitem value="Buscar Flota Programada" outcome="/buscarHistoricoBuses.xhtml" />
                             <p:menuitem value="Buscar Exped Programadas" outcome="/buscarHistoricoExpediciones.xhtml" /> 
-                       </p:submenu>
+                            <p:menuitem value="Buscar Kms Semanal Programados" outcome="/buscarHistoricoKms.xhtml" /> 
+                        </p:submenu>
                     </p:menubar>
 
                 </h:form>
             </p:layoutUnit>
 
-            <p:layoutUnit position="south" size="120" style="background-image: url('../resources/images/Banner6.PNG')">
+            <p:layoutUnit position="south" size="130" style="background-image: url('../resources/images/Banner6.PNG')">
                 <ui:insert name="footer"/>
                 <br>TRANSMILENIO SA</br> 
                 <br>Dirección Técnica de Buses</br> 
@@ -66,7 +67,7 @@
                             <p:tab title="INSTRUCCIONES" >
                                 <h:panelGrid columns="2" cellpadding="10"  >
                                  
-                                    <a href="#{request.contextPath}/faces/listado_buses.xhtml">
+                                    <a href="#{request.contextPath}/faces/index.xhtml">
                                         <img src="#{request.contextPath}/resources/images/tablas.jpg" width="70" alt="CONTEO BUSES ÚLTIMOS 30 DÍAS CARGADOS" onmouseover="CONTEO BUSES ÚLTIMOS 30 DÍAS CARGADOS"/>
                                     </a>                                
                                     <h:outputText
@@ -78,7 +79,7 @@
                             </p:tab>                           
                             <p:tab title="Búsquedas y filtros">
                                 <h:panelGrid columns="2" cellpadding="10">
-                                    <a href="#{request.contextPath}/faces/Filter_Buses_All.xhtml">
+                                    <a href="#{request.contextPath}/faces/index.xhtml">
                                         <img src="#{request.contextPath}/resources/images/busqueda3.PNG" width="70" />
                                     </a>
                                     <h:outputText value="En el menú BÚSQUEDAS, podrá buscar FLOTA, EXPEDICIONES Y KILOMETRAJE PROGRAMADO por rango de fechas , o por linea, ruta u operador.  Tenga en cuenta que la carga de un histórico, podrá no tener respuesta
