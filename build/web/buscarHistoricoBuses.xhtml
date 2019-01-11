@@ -1,0 +1,169 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <ui:composition template="/template.xhtml"> 
+        <ui:define name="body">
+
+
+
+            <h:body>
+                <p:panel header="#{bundleExp.PageBusesName}">
+
+                    <h:form>
+                        <h:panelGrid columns="1" >
+
+                            <p:commandButton value="!!!!DEBE LLENAR FECHA INICIAL Y FINAL !!!" type="button" onclick="PF('dlg3').show();" /> 
+                        </h:panelGrid>
+
+
+                        <p:dialog header="INFORMACIÓN CONSULTAS VS MEMORIA" widgetVar="dlg3" showEffect="explode" hideEffect="bounce" height="100">
+                            <h:outputText value="Si tiene poca memoria, elija rango de fechas cortas.  Esta información depende de  la última actualización en la  base de datos de programación" />
+                        </p:dialog>
+
+
+
+
+                        <p:growl id="msgs" showDetail="true" />
+
+                        <p:outputLabel for="button5" value="Fecha Inicial:*" />
+                        <p:calendar id="button5" value="#{busquedaHistoricoBusesBean.date1}" showOn="button" locale= "co" navigator="True" pattern="yyyy-MM-dd" placeholder="yyyy-MM-dd(obligatorio)" />
+                        <p:outputLabel for="button6" value="Fecha Final:*" />
+                        <p:calendar id="button6" value="#{busquedaHistoricoBusesBean.date2}" showOn="button" locale="co" navigator="True" pattern="yyyy-MM-dd" placeholder="yyyy-MM-dd(obligatorio)" />
+
+                        <p:dialog modal="true" resizable="false" header="Values" widgetVar="dlg" showEffect="fold">
+                            <h:outputText value="Button:" />
+
+                            <h:outputText value="#{busquedaHistoricoBusesBean.date1}">
+                                <f:convertDateTime pattern="dd/MM/yyyy" />
+                            </h:outputText>
+
+                            <h:outputText value="Button:" />
+
+                            <h:outputText value="#{busquedaHistoricoBusesBean.date2}">
+                                <f:convertDateTime pattern="dd/MM/yyyy" />
+                            </h:outputText>
+                        </p:dialog>
+
+
+                        <p:outputLabel value="Ingrese Operador"/>
+                        <p:inputText value="#{busquedaHistoricoBusesBean.txt_Operador_a_buscar}" placeholder="nombre o iniciales(Opcional)"/>
+                        <p:outputLabel value="Ingrese Ruta_Comercial"/>
+                        <p:inputText value="#{busquedaHistoricoBusesBean.txt_Ruta_a_Buscar}" placeholder="nombre o iniciales(Opcional)"/>
+                        <p:outputLabel value="Ingrese Linea"/>
+                        <p:inputText value="#{busquedaHistoricoBusesBean.txt__Linea_a_Buscar}" placeholder="número(Opcional)"/>
+
+
+                        <p:commandButton value="Buscar" action="#{busquedaHistoricoBusesBean.llenarListaFilterBuses()}" update="tblBuses"/>       
+
+
+
+                        <h:commandLink>
+
+                            <p:graphicImage url="./../resources/images/csv.png" width="24"/>
+                            <p:dataExporter type="csv" target="tblBuses" fileName="FlotaProgramadaFecha" />
+                            <p:outputLabel value="descargar"  />
+                        </h:commandLink>
+                        
+                            <p:panel>
+
+                                <p:dataTable id="tblBuses" value="#{busquedaHistoricoBusesBean.listFilterBuses}" var="bus" paginator="true" rowKey="#{item.id}" rows="100"  rowsPerPageTemplate="50,200,500,1000,100000" >
+                                <p:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="ID"/>
+                                    </f:facet>
+                                    <h:outputText value="#{bus.id}"/>
+                                </p:column>
+
+                                <p:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="RC"/>
+                                    </f:facet>
+                                    <h:outputText value="#{bus.rc}"/>
+                                </p:column>
+                                <p:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="Tipologia"/>
+                                    </f:facet>
+                                    <h:outputText value="#{bus.tipologia}"/>
+                                </p:column>
+                                <p:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="Operador"/>
+                                    </f:facet>
+                                    <h:outputText value="#{bus.operador}"/>
+                                </p:column>
+                                <p:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="ZONA"/>
+                                    </f:facet>
+                                    <h:outputText value="#{bus.zona}"/>
+                                </p:column>
+                                <p:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="Conteo de Buses por Tipologia"/>
+                                    </f:facet>
+                                    <h:outputText value="#{bus.conteoBusesTipologia}"/>
+                                </p:column>
+
+                                <p:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="Linea"/>
+                                    </f:facet>
+                                    <h:outputText value="#{bus.linea}"/>
+                                </p:column>
+                                <p:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="Ruta Comercial"/>
+                                    </f:facet>
+                                    <h:outputText value="#{bus.rutaCom}"/>
+                                </p:column>
+                                <p:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="Fecha"/>
+                                    </f:facet>
+                                    <h:outputText value="#{bus.fecha}"/>
+
+                                </p:column>
+                                <p:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="Tipo Dia"/>
+                                    </f:facet>
+                                    <h:outputText value="#{bus.tipodia}"/>
+                                </p:column>
+                                <p:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="Mes"/>
+                                    </f:facet>
+                                    <h:outputText value="#{bus.mes}"/>
+                                </p:column>
+                                <p:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="AÑO"/>
+                                    </f:facet>
+                                    <h:outputText value="#{bus.anio}"/>
+                                </p:column>
+
+                            </p:dataTable>
+                        </p:panel>
+
+
+
+
+
+                    </h:form> 
+                </p:panel> 
+            </h:body>
+
+        </ui:define>
+
+
+    </ui:composition>
+</html>
+

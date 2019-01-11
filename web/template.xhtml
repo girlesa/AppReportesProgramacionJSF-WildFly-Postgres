@@ -35,8 +35,8 @@
                         </p:submenu>
                        
                         <p:submenu label="BUSQUEDAS">
-                           
-                               
+                            <p:menuitem value="Buscar Flota Programada" outcome="/buscarHistoricoBuses.xhtml" />
+                              
                        </p:submenu>
                     </p:menubar>
 
@@ -70,7 +70,7 @@
                                         <img src="#{request.contextPath}/resources/images/tablas.jpg" width="70" alt="CONTEO BUSES ÚLTIMOS 30 DÍAS CARGADOS" onmouseover="CONTEO BUSES ÚLTIMOS 30 DÍAS CARGADOS"/>
                                     </a>                                
                                     <h:outputText
-                                        value="En la barra de menú, hay tres Opciones de reportes:  1.  'REPORTES 30 DIAS':   corresponde a la información de los últimos 30 días  cargados en la base de datos correspondientes bien sea a Contero de  Flota programada, Expediciones y Kilometraje diario. 2.Opción 'BÚSQUEDAS', realizar filtros de búsqueda por Operador, fechas, ruta comercial , Linea y tipo de evento.             
+                                        value="En la barra de menú, hay dos Opciones de reportes:  1.  'REPORTES 30 DIAS':   corresponde a la información de los últimos 30 días  cargados en la base de datos correspondientes bien sea a Contero de  Flota programada, Expediciones y Kilometraje diario. 2.Opción 'BÚSQUEDAS', realizar filtros de búsqueda por Operador, fechas, ruta comercial , Linea y tipo de evento.             
                                        Los campos OBLIGATORIOS SON LAS FECHAS, si no se llenan, no podrá visualizarse la consulta.  Tenga en cuenta que si no aparece información, debe haber error en la fecha, o la información no ha sido cargada.  Una vez obtenida la consulta en pantalla, se podrá descargar en formato .csv, el cual podrá abrir en excel y visualizar los datos en columnas si desea.                                        
                                        Con esta opción, usted podrá visualizar información solicitada en el rango de fechas o filtros elegido,tenga en cuenta que solo se descargará la información resultante de la consulta.
                                         en el caso de Kilometraje, solo podrá visualizar máximo una semana de histórico por limitación de memoria y gran cantidad de datos. " />
