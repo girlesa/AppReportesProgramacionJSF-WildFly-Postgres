@@ -1,0 +1,149 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <h:head>
+        <title>Expediciones por Fecha</title>
+
+    </h:head>
+    <ui:composition template="/template.xhtml">
+        <ui:define name="body" >
+            <h:body>
+                <p:panel header="#{bundleExped.PageExpName}"> 
+                    <h:form>
+                        <p:growl id="msgs" showDetail="true" />
+                        <h:panelGrid columns="1" >
+                            <p:commandButton value="¡VER RESTRICCIONES EN FECHAS!" type="button" onclick="PF('dlg3').show();" /> 
+                        </h:panelGrid>
+                        <p:dialog header="INFORMACIÓN CONSULTAS VS MEMORIA" widgetVar="dlg3" showEffect="explode" hideEffect="bounce" height="100">
+                            <h:outputText value="Si tiene poca memoria, elija rango de fechas cortas.  Esta información depende de  la última actualización en la  base de datos de programación" />
+                        </p:dialog>
+
+                        <p:outputLabel for="button3" value="Fecha inicial:*" />
+                        <p:calendar id="button3" value="#{busquedaHistoricoExpedicionesBean.date1_a_ingresar}" showOn="button" locale= "co" navigator="True" pattern="yyyy-MM-dd" placeholder="yyyy-MM-dd(obligatorio)"/>
+                        <p:outputLabel for="button4" value="Fecha Final:*" />
+                        <p:calendar id="button4" value="#{busquedaHistoricoExpedicionesBean.date2_a_ingresar}" showOn="button" locale="co" navigator="True" pattern="yyyy-MM-dd" placeholder="yyyy-MM-dd(obligatorio)"/>
+
+                        <p:dialog modal="true" resizable="false" header="Values" widgetVar="dlg" showEffect="fold">
+                            <h:outputText value="Button:" />
+
+                            <h:outputText value="#{busquedaHistoricoExpedicionesBean.date1_a_ingresar}">
+                                <f:convertDateTime pattern="dd/MM/yyyy" />
+                            </h:outputText>
+
+                            <h:outputText value="Button:" />
+
+                            <h:outputText value="#{busqueda_Expediciones_All_Bean.date2_a_ingresar}">
+                                <f:convertDateTime pattern="dd/MM/yyyy" />
+                            </h:outputText>
+                        </p:dialog>
+                         <p:outputLabel value="ingrese Operador"/>
+                         <p:inputText value="#{busquedaHistoricoExpedicionesBean.txt_operador_a_buscar}" placeholder="nombre o iniciales(Opcional)."/>
+                        <p:outputLabel value="Ingrese Ruta comercial"/>
+                        <p:inputText value="#{busquedaHistoricoExpedicionesBean.txt_RC_a_buscar}" placeholder="nombre o iniciales(Opcional)"/>
+                        
+                         <p:outputLabel value="Ingrese Tipo Evento"/>
+                         <p:inputText value="#{busquedaHistoricoExpedicionesBean.txt_tipo_evento_a_buscar}" placeholder="Exp, Vpa,Vex(Opcional)"/>
+
+
+
+                         <p:commandButton value="Buscar" action="#{busquedaHistoricoExpedicionesBean.llenarExpediciones_All()}" update="tblExped1" title="DEBE ESCRIBIR FECHA INICIAL Y FINAL dd/MM/yyyy"/>
+
+                        <h:commandLink>
+                            <p:graphicImage url="./../resources/images/csv.png" width="24"/>
+                            <p:dataExporter type="csv" target="tblExped1" fileName="ExpedicionesProgramadaFiltrada" />
+                            <p:outputLabel value="descargar"  />
+                        </h:commandLink>
+
+                        <p:panel style="background-image: url('../resources/images/SITP-FONDO1.png')">
+
+                            <p:dataTable id="tblExped1" value="#{busquedaHistoricoExpedicionesBean.listExped}" var="exped1" paginator="true" rowKey="#{item.id}" rows="100"  rowsPerPageTemplate="50,200,500,1000,10000" >
+                                <p:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="ID"/>
+                                    </f:facet>
+                                    <h:outputText value="#{exped1.id}"/>
+                                </p:column> 
+                                <p:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="CUADRO"/>
+                                    </f:facet>
+                                    <h:outputText value="#{exped1.cuadro}"/>
+                                </p:column> 
+                                <p:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="Linea"/>
+                                    </f:facet>
+                                    <h:outputText value="#{exped1.linea}"/>
+                                </p:column>
+                                <p:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="Tipo Evento"/>
+                                    </f:facet>
+                                    <h:outputText value="#{exped1.tipoEvento}"/>
+                                </p:column>
+                                <p:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="Cuenta de expediciones"/>
+                                    </f:facet>
+                                    <h:outputText value="#{exped1.cuentaexpediciones}"/>
+                                </p:column>
+                                <p:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="Tipologia"/>
+                                    </f:facet>
+                                    <h:outputText value="#{exped1.tipologia}"/>
+                                </p:column>
+
+                                <p:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="Operador"/>
+                                    </f:facet>
+                                    <h:outputText value="#{exped1.operador}"/>
+                                </p:column>
+                                <p:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="RC"/>
+                                    </f:facet>
+                                    <h:outputText value="#{exped1.rc}"/>
+                                </p:column>
+                                <p:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="Fecha"/>
+                                    </f:facet>
+                                    <h:outputText value="#{exped1.fecha}"/>
+                                </p:column>
+                                <p:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="Mes"/>
+                                    </f:facet>
+                                    <h:outputText value="#{exped1.mes}"/>
+                                </p:column>
+                                <p:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="Tipo Dia"/>
+                                    </f:facet>
+                                    <h:outputText value="#{exped1.tipodia}"/>
+                                </p:column>
+                                <p:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="Dia Calendario"/>
+                                    </f:facet>
+                                    <h:outputText value="#{exped1.diaCal}"/>
+                                </p:column>
+
+                            </p:dataTable>
+
+                        </p:panel>
+                    </h:form>               
+                </p:panel>
+
+            </h:body>
+        </ui:define>
+    </ui:composition>
+</html>
+
+
